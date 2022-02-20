@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeatherComponent } from './heather/heather.component';
 import { FooterComponent } from './footer/footer.component';
 import { AsideComponent } from './aside/aside.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -13,7 +14,8 @@ import { AsideComponent } from './aside/aside.component';
     AsideComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   exports: [
     HeatherComponent,
