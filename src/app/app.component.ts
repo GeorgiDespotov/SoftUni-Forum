@@ -8,16 +8,16 @@ import { Ipost, Itheme } from './shared/interfaces';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  themes: Itheme[] | undefined;
+  // posts: Ipost[] | undefined;
 
-  constructor(private contentServices: ContentService) {
-    this.fetchThemes();
-   }
+  // constructor(private contentServices: ContentService) {
+  //   this.fetchPosts();
+  //  }
 
 
-  fetchThemes(): void {
-    this.themes = undefined;
-    this.contentServices.loadThemes().subscribe(themes => this.themes = themes);
+  // fetchPosts(): void {
+  //   this.posts = undefined;
+  //   this.contentServices.loadPosts(5).subscribe(posts => this.posts = posts);
 
-  }
+  // }
 }

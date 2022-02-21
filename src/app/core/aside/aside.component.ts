@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Itheme } from 'src/app/shared/interfaces';
+import { ContentService } from 'src/app/content.service';
+import { Ipost, Itheme } from 'src/app/shared/interfaces';
 
 
 @Component({
@@ -9,9 +10,23 @@ import { Itheme } from 'src/app/shared/interfaces';
 })
 export class AsideComponent {
 
-  @Input() title!: string;
-  @Input() items: Itheme[] | undefined;
+  // @Input() title!: string;
+  // @Input() items: Ipost[] | undefined;
 
-  constructor() { }
+  // constructor() { }
+  title!: string;
+
+  posts: Ipost[] | undefined;
+
+  constructor(private contentServices: ContentService,) {
+    this.fetchPosts();
+    this.title = 'Reacent Posts';
+  }
+
+  fetchPosts(): void {
+    this.posts = undefined;
+    this.contentServices.loadPosts(5).subscribe(posts => this.posts = posts);
+
+  }
 
 }

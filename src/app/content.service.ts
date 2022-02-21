@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Ipost, Itheme } from './shared/interfaces';
+import { environment } from '../environments/environment';
+
+const API_URL = environment.apiURL;
 
 @Injectable()
 export class ContentService {
@@ -9,10 +12,13 @@ export class ContentService {
 
   loadThemes() {
     
-    return this.http.get<Itheme[]>('http://localhost:3000/api/themes');
+    return this.http.get<Itheme[]>(`${API_URL}/themes`);
   }
 
-  loadPosts() {
-    return this.http.get<Ipost[]>('http://localhost:3000/api/posts');
+  loadPosts(take?: number) {
+
+    const query = take ? `?limit=${take}` : '';
+
+    return this.http.get<Ipost[]>(`${API_URL}/posts${query}`);
   }
 }
