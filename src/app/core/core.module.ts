@@ -6,6 +6,7 @@ import { AsideComponent } from './aside/aside.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { localeStorage } from './injection-tokens';
+import { AuthActivate } from './guards/auth.activate';
 
 
 
@@ -60,7 +61,8 @@ import { localeStorage } from './injection-tokens';
       },
       deps: [PLATFORM_ID]
       // useValue: window.localStorage
-    }  
+    },
+    AuthActivate 
   ]
 })
 export class CoreModule {

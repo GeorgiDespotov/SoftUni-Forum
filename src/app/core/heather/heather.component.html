@@ -14,10 +14,12 @@
             </ul>
             <ul *ngIf="isLoged">
                 <li>
-                    <a routerLink="/login">Login</a>
+                    <a>
+                        {{firstName}}'s profile
+                    </a>
                 </li>
                 <li>
-                    <a routerLink="/register">Register</a>
+                    <a (click)="logout()">Logout</a>
                 </li>
             </ul>
         </div>
