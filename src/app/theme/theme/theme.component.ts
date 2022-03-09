@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-// import { ContentService } from '../../content.service';
-// import { Itheme } from '../../shared/interfaces';
+import { ActivatedRoute } from '@angular/router';
+import { ContentService } from 'src/app/content.service';
+import { Itheme } from 'src/app/shared/interfaces';
+
 
 @Component({
   selector: 'app-theme',
@@ -9,16 +11,20 @@ import { Component } from '@angular/core';
 })
 export class ThemeComponent {
 
-  // themes: Itheme[] | undefined;
+  theme: Itheme | undefined;
 
-  // constructor(private contentServices: ContentService) {
-  //   this.fetchThemes();
-  //  }
+  constructor(
+    private contentServices: ContentService,
+    private activatedRoute: ActivatedRoute
+    ) {
+    this.fetchTheme();
+   }
 
 
-  // fetchThemes(): void {
-  //   this.themes = undefined;
-  //   this.contentServices.loadThemes().subscribe(themes => this.themes = themes);
+  fetchTheme(): void {
+    this.theme = undefined;
+    const id = this.activatedRoute.snapshot.params.themeId;
+    this.contentServices.loadTheme(id).subscribe(theme => this.theme = theme);
 
-  // }
+  }
 }

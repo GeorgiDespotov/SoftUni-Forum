@@ -1,7 +1,7 @@
 export interface Itheme {
     _id: string;
     subscribers: string[];
-    posts: string[];
+    posts: any[];
     themeName: string;
     userId: {
         _id: string,

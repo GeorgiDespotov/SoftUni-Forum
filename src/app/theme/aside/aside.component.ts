@@ -11,9 +11,9 @@ import { Ipost, Itheme } from 'src/app/shared/interfaces';
 export class AsideComponent {
 
   // @Input() title!: string;
-  // @Input() items: Ipost[] | undefined;
+  @Input() items: Ipost[] | undefined;
 
-  // constructor() { }
+  
   title!: string;
 
   posts: Ipost[] | undefined;

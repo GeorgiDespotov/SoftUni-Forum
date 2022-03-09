@@ -14,12 +14,12 @@
             </ul>
             <ul *ngIf="isLoged">
                 <li>
-                    <a>
+                    <a routerLink="/profile">
                         {{firstName}}'s profile
                     </a>
                 </li>
                 <li>
-                    <a (click)="logout()">Logout</a>
+                    <a (click)="logout()" routerLink="/home">Logout</a>
                 </li>
             </ul>
         </div>

@@ -22,7 +22,7 @@ export class UserService {
 
   login(email: string, password: string): void {
     this.user = {
-      email,
+      email: 'john@abv.bg',
       firstName: 'John',
       lastName: 'Dou'
     }
@@ -31,5 +31,6 @@ export class UserService {
 
   logout(): void {
     this.user = undefined;
+    this.localeStorage.removeItem('<USER>');
   }
 }

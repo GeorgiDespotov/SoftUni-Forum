@@ -23,7 +23,6 @@ export class HeatherComponent {
     ) { }
 
   logout(): void {
-    this.router.navigate(['/home']);
-    this.userService.user = undefined;
+    this.userService.logout();
   }
 }
