@@ -17,11 +17,11 @@ import { NotFoundComponent } from './not-found/not-found.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     CoreModule,
     SharedModule,
     UserModule,
     ThemeModule,
+    AppRoutingModule
   ],
   providers: [
     ContentService
