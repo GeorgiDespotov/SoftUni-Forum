@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { emailValidator, missMatch } from 'src/app/shared/validators';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,9 +10,29 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent {
 
-  constructor(private userService: UserService) { }
+  form: FormGroup;
 
-  register(email: string, password: string): void {
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required, emailValidator]],
+      tel: [''],
+      
+        password: ['', [Validators.required, Validators.minLength(3)]],
+        rePassword: ['', [Validators.required]]
+    },
+    {
+      validator: missMatch('password', 'rePassword')
+    }
+    );
+   }
+
+  register(): void {
+    if (this.form.invalid) {
+      return
+    }
+    console.log(this.form.value);
+    
   }
 
 }
