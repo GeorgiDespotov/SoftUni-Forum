@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { emailValidator } from 'src/app/shared/validators';
 import { UserService } from '../user.service';
 
 @Component({
@@ -8,11 +10,32 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent {
 
-  firstName = this.userService.user?.firstName;
-  email = this.userService.user?.email;
+  isUpdateMode = false;
 
-  constructor(private userService: UserService) { }
+  emailValidator = emailValidator
 
- 
+  get user() {
+    return this.userService.user;
+  }
+
+  // firstName = this.userService.user?.firstName;
+  // email = this.userService.user?.email;
+
+  constructor(private userService: UserService) { 
+    console.log(this.isUpdateMode);
+
+  }
+
+  updateForm(form: NgForm): void {
+    if (form.invalid) { return }
+    this.userService.updateProfile(form.value).subscribe({
+      next: () => {
+        this.isUpdateMode = false;
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    })
+  }
 
 }

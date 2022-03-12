@@ -13,8 +13,8 @@ export class HeatherComponent {
     return this.userService.isLoged;
   }
 
-  get firstName(): string {
-    return this.userService.user?.firstName || '';
+  get username(): string {
+    return this.userService.user?.username || '';
   }
  
   constructor(
@@ -23,6 +23,8 @@ export class HeatherComponent {
     ) { }
 
   logout(): void {
-    this.userService.logout();
+    this.userService.logout().subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

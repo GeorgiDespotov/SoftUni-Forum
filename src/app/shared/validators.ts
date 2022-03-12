@@ -5,7 +5,7 @@ export function emailValidator(control: AbstractControl): ValidationErrors | nul
         return null;
     }
 
-    return /^[a-zA-Z0-9\.-]{4}@gmail\.(bg|com)$/.test(control.value) ? null : {
+    return /^[a-zA-Z0-9\.-]{4,}@gmail\.(bg|com)$/.test(control.value) ? null : {
         invalidEmail: true
     };
 }

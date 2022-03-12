@@ -11,19 +11,19 @@ export class ContentService {
   constructor(private http: HttpClient) { }
 
   loadTheme(id: string) {
-    
-    return this.http.get<Itheme>(`${API_URL}/themes/${id}`);
+    return this.http.get<Itheme>(`${API_URL}/themes/${id}`, { withCredentials: true });
   }
   
   loadThemes() {
-    
-    return this.http.get<Itheme[]>(`${API_URL}/themes`);
+    return this.http.get<Itheme[]>(`${API_URL}/themes`, { withCredentials: true });
   }
 
   loadPosts(take?: number) {
-
     const query = take ? `?limit=${take}` : '';
+    return this.http.get<Ipost[]>(`${API_URL}/posts${query}`, { withCredentials: true });
+  }
 
-    return this.http.get<Ipost[]>(`${API_URL}/posts${query}`);
+  postTheme(data: any) {
+    return this.http.post<Itheme[]>(`${API_URL}/themes`,data, { withCredentials: true });
   }
 }

@@ -9,7 +9,7 @@ import { UserService } from '../user.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
 
   emailValidator = emailValidator;
 
@@ -17,13 +17,21 @@ export class LoginComponent  {
     private userService: UserService,
     private activateRaute: ActivatedRoute,
     private router: Router
-    ) { }
+  ) { }
 
- login(form: NgForm): void {
-   const {email, password} = form.value;
-   this.userService.login(email, password);
-   const redirectUrl = this.activateRaute.snapshot.queryParams.redirectUrl || '/';
-   this.router.navigate([redirectUrl]);
- }
+  login(form: NgForm): void {
+    if (form.invalid) { return }
+    const { email, password } = form.value;
+    this.userService.login({ email, password }).subscribe({
+      next: () => {
+        const redirectUrl = this.activateRaute.snapshot.queryParams.redirectUrl || '/';
+        this.router.navigate([redirectUrl]);
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
+
+  }
 
 }
