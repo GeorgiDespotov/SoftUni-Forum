@@ -12,12 +12,17 @@ import { UserService } from '../user.service';
 export class LoginComponent {
 
   emailValidator = emailValidator;
-
+  
   constructor(
     private userService: UserService,
     private activateRaute: ActivatedRoute,
     private router: Router
-  ) { }
+    ) {
+      console.log(this.userService.isLoged);
+      
+    }
+    
+    
 
   login(form: NgForm): void {
     if (form.invalid) { return }

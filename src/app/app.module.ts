@@ -18,10 +18,10 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [
     BrowserModule,
+    UserModule,
     CoreModule,
     SharedModule,
     HttpClientModule,
-    UserModule,
     ThemeModule,
     AppRoutingModule
   ],

@@ -16,8 +16,8 @@ import { AuthActivate } from './guards/auth.activate';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule,
-    HttpClientModule
   ],
   exports: [
     HeatherComponent,

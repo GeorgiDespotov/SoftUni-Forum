@@ -18,13 +18,12 @@ export class ThemeComponent {
     private activatedRoute: ActivatedRoute
     ) {
     this.fetchTheme();
-   }
-
-
+    
+  }
+  
   fetchTheme(): void {
     this.theme = undefined;
     const id = this.activatedRoute.snapshot.params.themeId;
     this.contentServices.loadTheme(id).subscribe(theme => this.theme = theme);
-
   }
 }

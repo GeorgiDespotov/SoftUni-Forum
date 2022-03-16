@@ -13,6 +13,7 @@ export class AuthActivate implements CanActivate {
 
         if (typeof authenticationRequired === 'boolean' && 
         authenticationRequired === this.userService.isLoged) { 
+            
             return true;
         }
         let authRedirectUrl = authenticationFalureRedirectUrl;

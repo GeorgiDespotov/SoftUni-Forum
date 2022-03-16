@@ -11,10 +11,12 @@ const apiUrl = environment.apiURL;
 @Injectable()
 export class UserService {
 
-  user: Iuser | null | undefined = undefined;
+  user: Iuser | null | undefined;
+
+  loged = !!this.getProfileInfo();
 
   get isLoged(): boolean {
-    return !!this.user;
+    return this.loged;
   }
 
   constructor(
@@ -30,6 +32,7 @@ export class UserService {
 
   }
   register(data: { username: string; email: string; tel: string; password: string }) {
+    this.loged = true;
     return this.http.post<Iuser>(`${apiUrl}/register`, data, { withCredentials: true })
       .pipe(
         tap((user) => this.user = user)
@@ -44,6 +47,7 @@ export class UserService {
   }
 
   login(data: { email: string, password: string }) {
+    this.loged = true;
     return this.http.post<Iuser>(`${apiUrl}/login`, data, { withCredentials: true })
       .pipe(
         tap((user) => this.user = user)
@@ -51,6 +55,7 @@ export class UserService {
   }
 
   logout() {
+    this.loged = false;
     return this.http.post<Iuser>(`${apiUrl}/logout`, {}, { withCredentials: true })
       .pipe(
         tap(() => this.user = null)

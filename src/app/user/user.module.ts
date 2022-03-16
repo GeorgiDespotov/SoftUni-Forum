@@ -17,10 +17,10 @@ import { SharedModule } from '../shared/shared.module';
   ],
   imports: [
     CommonModule,
+    ReactiveFormsModule, 
+    UserRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
     SharedModule,
-    UserRoutingModule
   ],
   providers: [
     UserService

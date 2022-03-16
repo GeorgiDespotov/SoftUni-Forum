@@ -28,5 +28,6 @@ export class AsideComponent {
     this.contentServices.loadPosts(5).subscribe(posts => this.posts = posts);
 
   }
+  
 
 }
