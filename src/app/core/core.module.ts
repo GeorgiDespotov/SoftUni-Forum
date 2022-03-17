@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { localeStorage } from './injection-tokens';
 import { AuthActivate } from './guards/auth.activate';
+import { appInterceptorProvider } from './app-interceptor';
 
 
 
@@ -59,7 +60,8 @@ import { AuthActivate } from './guards/auth.activate';
       deps: [PLATFORM_ID]
       // useValue: window.localStorage
     },
-    AuthActivate 
+    AuthActivate,
+    appInterceptorProvider
   ]
 })
 export class CoreModule {

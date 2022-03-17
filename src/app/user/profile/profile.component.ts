@@ -15,8 +15,6 @@ export class ProfileComponent {
   emailValidator = emailValidator
 
   get user() {
-    console.log(this.userService.isLoged);
-    
     return this.userService.user;
   }
 

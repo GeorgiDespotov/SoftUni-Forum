@@ -1,12 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
 // import { localeStorage } from '../core/injection-tokens';
 import { Iuser } from '../shared/interfaces';
 import { tap } from 'rxjs/operators';
 
-
-const apiUrl = environment.apiURL;
 
 @Injectable()
 export class UserService {
@@ -33,14 +30,14 @@ export class UserService {
   }
   register(data: { username: string; email: string; tel: string; password: string }) {
     this.loged = true;
-    return this.http.post<Iuser>(`${apiUrl}/register`, data, { withCredentials: true })
+    return this.http.post<Iuser>(`/api/register`, data)
       .pipe(
         tap((user) => this.user = user)
       );
   }
 
   getProfileInfo() {
-    return this.http.get<Iuser>(`${apiUrl}/users/profile`, { withCredentials: true })
+    return this.http.get<Iuser>(`/api/users/profile`)
       .pipe(
         tap((user) => this.user = user)
       );
@@ -48,7 +45,7 @@ export class UserService {
 
   login(data: { email: string, password: string }) {
     this.loged = true;
-    return this.http.post<Iuser>(`${apiUrl}/login`, data, { withCredentials: true })
+    return this.http.post<Iuser>(`/api/login`, data)
       .pipe(
         tap((user) => this.user = user)
       );
@@ -56,14 +53,14 @@ export class UserService {
 
   logout() {
     this.loged = false;
-    return this.http.post<Iuser>(`${apiUrl}/logout`, {}, { withCredentials: true })
+    return this.http.post<Iuser>(`/api/logout`, {})
       .pipe(
         tap(() => this.user = null)
       );;
   }
 
   updateProfile(data: { username: string; email: string; tel: string; }) {
-    return this.http.put<Iuser>(`${apiUrl}/users/profile`, data, { withCredentials: true })
+    return this.http.put<Iuser>(`/api/users/profile`, data)
       .pipe(
         tap((user) => this.user = user)
       );
