@@ -1,19 +1,25 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 // import { localeStorage } from '../core/injection-tokens';
-import { Iuser } from '../shared/interfaces';
-import { tap } from 'rxjs/operators';
+import { Iuser } from '../../shared/interfaces';
+import { catchError, tap } from 'rxjs/operators';
 
 
 @Injectable()
 export class UserService {
 
-  user: Iuser | null | undefined;
-
+  user: Iuser | null | undefined = undefined;
   loged = !!this.getProfileInfo();
 
+  get userParams() {
+    return this.user
+  }
+  
   get isLoged(): boolean {
-    return this.loged;
+    console.log(this.user);
+    console.log(this.loged);
+    
+    return !!this.user;
   }
 
   constructor(
@@ -39,7 +45,14 @@ export class UserService {
   getProfileInfo() {
     return this.http.get<Iuser>(`/api/users/profile`)
       .pipe(
-        tap((user) => this.user = user)
+        tap((user) => {
+          
+          this.user = user;
+          //СИМУЛИРАМ ГРЕШКА ПРИ ЛОГИН ЗА ДА ПРОБВАМ ГЛОБАЛНИЯТ ЕРОР ХАНДЛЕР
+          // this.loged = false;
+          // throw new Error('TEST');
+        }),
+        
       );
   }
 

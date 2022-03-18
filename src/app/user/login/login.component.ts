@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { emailValidator } from 'src/app/shared/validators';
-import { UserService } from '../user.service';
+import { UserService } from '../../core/survices/user.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,7 @@ export class LoginComponent {
     private activateRaute: ActivatedRoute,
     private router: Router
     ) {
-      console.log(this.userService.isLoged);
+      console.log(this.userService.user);
       
     }
     
@@ -26,6 +26,7 @@ export class LoginComponent {
 
   login(form: NgForm): void {
     if (form.invalid) { return }
+    
     const { email, password } = form.value;
     this.userService.login({ email, password }).subscribe({
       next: () => {

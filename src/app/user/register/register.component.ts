@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { emailValidator, missMatch } from 'src/app/shared/validators';
-import { UserService } from '../user.service';
+import { UserService } from '../../core/survices/user.service';
 
 @Component({
   selector: 'app-register',

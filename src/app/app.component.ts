@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { ContentService } from './content.service';
+import { ContentService } from './core/survices/content.service';
 import { Ipost, Itheme } from './shared/interfaces';
-import { UserService } from './user/user.service';
+import { UserService } from './core/survices/user.service';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +17,9 @@ export class AppComponent {
   constructor ( private userService: UserService ) {
 
     this.userService.getProfileInfo().subscribe({
-      error: () => {
+      error: (err) => {
         this.userService.user = null;
+        throw err;
       }
     })
   }

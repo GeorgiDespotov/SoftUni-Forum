@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Ipost, Itheme } from './shared/interfaces';
+import { Ipost, Itheme } from '../../shared/interfaces';
 
 
 @Injectable()

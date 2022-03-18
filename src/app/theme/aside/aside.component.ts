@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { ContentService } from 'src/app/content.service';
+import { ContentService } from 'src/app/core/survices/content.service';
 import { Ipost, Itheme } from 'src/app/shared/interfaces';
 
 
