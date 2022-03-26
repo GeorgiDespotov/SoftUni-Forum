@@ -10,6 +10,9 @@ import { UserService } from 'src/app/core/survices/user.service';
 export class HeatherComponent {
 
   get isLoged(): boolean {
+    console.log(this.userService.isLoged);
+    console.log(this.userService.loged);
+    
     return this.userService.isLoged;
   }
 

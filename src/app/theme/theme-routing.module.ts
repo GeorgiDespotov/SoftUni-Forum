@@ -8,16 +8,22 @@ import { ThemesComponent } from './themes/themes.component';
 
 const routes: Routes = [
     {
-        path: '',
-        pathMatch: 'full',
-        component: ThemesComponent
+        path: 'themes',
+        children : [
+
+            {
+                path: '',
+                pathMatch: 'full',
+                component: ThemesComponent
+            },
+            {
+                path: ':themeId',
+                component: ThemeComponent
+            },
+        ]
     },
     {
-        path: ':themeId',
-        component: ThemeComponent
-    },
-    {
-        path: 'add',
+        path: 'new-theme',
         component: NewThemeComponent,
         canActivate: [AuthActivate],
         data: {

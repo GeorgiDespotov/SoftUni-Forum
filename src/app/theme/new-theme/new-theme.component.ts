@@ -19,7 +19,7 @@ export class NewThemeComponent {
   if (form.invalid) { return }
   this.contentService.postTheme(form.value).subscribe({
     next: () => {
-      this.router.navigate(['/theme']);
+      this.router.navigate(['/themes/themes']);
     },
     error: (err) => {
       console.log(err);

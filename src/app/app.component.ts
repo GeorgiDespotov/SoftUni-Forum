@@ -19,6 +19,7 @@ export class AppComponent {
     this.userService.getProfileInfo().subscribe({
       error: (err) => {
         this.userService.user = null;
+        
         throw err;
       }
     })

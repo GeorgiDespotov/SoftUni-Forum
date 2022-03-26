@@ -4,7 +4,7 @@
         <div *ngIf="themes" class="theme-title">
             <!-- theme component  -->
             <div *ngFor="let theme of themes" class="theme-container">
-                <div class="theme-name-wrapper" [routerLink]="['/theme', theme._id]">
+                <div class="theme-name-wrapper" [routerLink]="['/themes/themes', theme._id]">
                     <div class="theme-name">
                         <a class="normal">
                             <h2>{{theme.themeName}}</h2>

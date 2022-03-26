@@ -8,6 +8,8 @@ import { SharedModule } from './shared/shared.module';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorComponent } from './error/error.component';
+// import { ThemeModule } from './theme/theme.module';
+// import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,11 @@ import { ErrorComponent } from './error/error.component';
     ErrorComponent,
   ],
   imports: [
-    BrowserModule,
     CoreModule,
+    BrowserModule,
     SharedModule,
+    // ThemeModule,
+    // UserModule,
     HttpClientModule,
     AppRoutingModule
   ],

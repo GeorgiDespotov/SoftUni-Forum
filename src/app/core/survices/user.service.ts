@@ -66,10 +66,12 @@ export class UserService {
 
   logout() {
     this.loged = false;
+    console.log(this.isLoged);
     return this.http.post<Iuser>(`/api/logout`, {})
       .pipe(
         tap(() => this.user = null)
       );;
+      
   }
 
   updateProfile(data: { username: string; email: string; tel: string; }) {
