@@ -17,7 +17,6 @@ export class ProfileComponent {
   user1 = this.userService.user
 
   get user() {
-    console.log(this.user1);
     
     return this.userService.user;
   }

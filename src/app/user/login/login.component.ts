@@ -17,10 +17,7 @@ export class LoginComponent {
     private userService: UserService,
     private activateRaute: ActivatedRoute,
     private router: Router
-    ) {
-      console.log(this.userService.user);
-      
-    }
+    ) { }
     
     
 

@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { localeStorage } from './injection-tokens';
 import { AuthActivate } from './guards/auth.activate';
 import { appInterceptorProvider } from './app-interceptor';
-// import { globalErrorHandlerProvider } from './error-handler';
+import { globalErrorHandlerProvider } from './error-handler';
 import { UserService } from './survices/user.service';
 import { ContentService } from './survices/content.service';
 
@@ -65,7 +65,7 @@ import { ContentService } from './survices/content.service';
     },
     AuthActivate,
     appInterceptorProvider,
-    // globalErrorHandlerProvider,
+    globalErrorHandlerProvider,
     UserService,
     ContentService
   ]

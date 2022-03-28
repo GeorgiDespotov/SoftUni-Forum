@@ -16,8 +16,8 @@ export class UserService {
   }
   
   get isLoged(): boolean {
-    console.log(this.user);
-    console.log(this.loged);
+    // console.log(this.user);
+    // console.log(this.loged);
     
     return !!this.user;
   }
@@ -57,7 +57,8 @@ export class UserService {
   }
 
   login(data: { email: string, password: string }) {
-    this.loged = true;
+    console.log(this.user);
+    
     return this.http.post<Iuser>(`/api/login`, data)
       .pipe(
         tap((user) => this.user = user)
@@ -66,10 +67,11 @@ export class UserService {
 
   logout() {
     this.loged = false;
-    console.log(this.isLoged);
     return this.http.post<Iuser>(`/api/logout`, {})
-      .pipe(
-        tap(() => this.user = null)
+    .pipe(
+      tap(() => {this.user = null
+    console.log(this.isLoged)}
+    ),
       );;
       
   }

@@ -15,14 +15,21 @@ export class AppComponent {
   }
 
   constructor ( private userService: UserService ) {
-
-    this.userService.getProfileInfo().subscribe({
+    console.log(userService.user);
+    
+    // if (userService.getProfileInfo()) {
+      console.log(userService.getProfileInfo());
+      
+    
+    userService.getProfileInfo().subscribe({
       error: (err) => {
         this.userService.user = null;
+        console.log('here');
         
         throw err;
       }
     })
+  // }
   }
   // posts: Ipost[] | undefined;
 

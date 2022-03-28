@@ -18,6 +18,7 @@ export class CustomValidatorDirective implements Validator {
   constructor() { }
   validate(control: AbstractControl): ValidationErrors | null {
     if (!this.appCustomValidator) {
+      
       return null;
     }
     return this.appCustomValidator(control);

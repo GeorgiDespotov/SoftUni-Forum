@@ -11,8 +11,11 @@ export class HomeComponent {
   get isLoged(): boolean {
     return this.userService.isLoged;
   }
-
-  constructor(private userService: UserService) { }
+  
+  constructor(private userService: UserService) {
+    console.log(userService.user);
+    
+   }
 
  
 
